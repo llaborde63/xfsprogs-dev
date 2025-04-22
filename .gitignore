@@ -85,3 +85,9 @@ cscope.*
 # docs
 /man/man8/mkfs.xfs.8
 /man/man8/xfs_scrub_all.8
+
+# llaborde
+libfrog/gettext.py
+libxfs/.extradep
+mkfs/xfs_protofile.py
+scrub/xfs_scrub_all.py
