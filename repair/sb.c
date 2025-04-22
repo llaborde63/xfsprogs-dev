@@ -147,7 +147,7 @@ __find_secondary_sb(
 			if (verify_sb(c_bufsb, &bufsb, 0) != XR_OK)
 				continue;
 
-			do_warn(_("found candidate secondary superblock...\n"));
+			do_warn(_("found candidate secondary superblock at offset=0x%" PRIx64 "...\n"), off+i);
 
 			/*
 			 * found one.  now verify it by looking
