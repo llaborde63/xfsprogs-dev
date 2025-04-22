@@ -3160,19 +3160,19 @@ _("inode identifier %llu mismatch on inode %" PRIu64 "\n"),
 				return 1;
 			goto clear_bad_out;
 		}
+        // llaborde
 		if (platform_uuid_compare(&dino->di_uuid,
 					  &mp->m_sb.sb_meta_uuid)) {
             char di_uuid[40], sb_uuid[40];
             di_uuid[0] = '\0';
             sb_uuid[0] = '\0';
-            platform_uuid_unparse(&dino->di_uuid, di_uuid, sizeof(di_uuid));
-            platform_uuid_unparse(&mp->m_sb.sb_meta_uuid, sb_uuid, sizeof(sb_uuid));
+            platform_uuid_unparse(&dino->di_uuid, di_uuid);
+            platform_uuid_unparse(&mp->m_sb.sb_meta_uuid, sb_uuid);
 			if (!uncertain)
-				do_warn(
-			_("UUID mismatch on inode %" PRIu64 " in=%s gv=%s\n"), lino, di_uuid, sb_uuid;
-			if (verify_mode)
-				return 1;
-			goto clear_bad_out;
+				do_warn(_("llaborde: UUID mismatch on inode %" PRIu64 " in=%s gv=%s\n"), lino, di_uuid, sb_uuid);
+			//if (verify_mode)
+			//	return 1;
+			//goto clear_bad_out;
 		}
 	}
 

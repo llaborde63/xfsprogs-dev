@@ -699,13 +699,13 @@ process_dir2_data(
 	 * Phase 6 will kill this block if we don't kill the inode.
 	 */
 	if (ptr != endptr) {
-		do_warn(_("corrupt block %u in directory inode %" PRIu64 "\n"),
+		do_warn(_("llaborde: corrupt block %u in directory inode %" PRIu64 "\n"),
 			da_bno, ino);
 		if (!no_modify)
 			do_warn(_("\twill junk block\n"));
 		else
 			do_warn(_("\twould junk block\n"));
-		return 1;
+		//return 1; // llaborde
 	}
 	ptr = (char *)d + mp->m_dir_geo->data_entry_offset;
 	/*
@@ -952,12 +952,12 @@ _("multiple .. entries in directory inode %" PRIu64 ": "),
 				(*dot)++;
 				if (ent_ino != ino) {
 					do_warn(
-_("bad . entry in directory inode %" PRIu64 ", was %" PRIu64 ": "),
+_("llaborde: bad . entry in directory inode %" PRIu64 ", was %" PRIu64 ": "),
 						ino, ent_ino);
 					if (!no_modify) {
 						do_warn(_("correcting\n"));
-						dep->inumber = cpu_to_be64(ino);
-						*dirty = 1;
+						//dep->inumber = cpu_to_be64(ino);
+						//*dirty = 1; //llaborde
 					} else {
 						do_warn(_("would correct\n"));
 					}
@@ -1074,7 +1074,7 @@ _("corrupt directory block %u for inode %" PRIu64 "\n"),
 	if (!(be32_to_cpu(block->magic) == XFS_DIR2_BLOCK_MAGIC ||
 	      be32_to_cpu(block->magic) == XFS_DIR3_BLOCK_MAGIC))
 		do_warn(
-_("bad directory block magic # %#x in block %u for directory inode %" PRIu64 "\n"),
+_("llaborde: bad directory block magic # %#x in block %u for directory inode %" PRIu64 "\n"),
 			be32_to_cpu(block->magic), mp->m_dir_geo->datablk, ino);
 	/*
 	 * process the data area
@@ -1437,7 +1437,7 @@ _("corrupt directory data block %" PRIu64 " for inode %" PRIu64 "\n"),
 		if (!(be32_to_cpu(data->magic) == XFS_DIR2_DATA_MAGIC ||
 		      be32_to_cpu(data->magic) == XFS_DIR3_DATA_MAGIC))
 			do_warn(
-_("bad directory block magic # %#x in block %" PRIu64 " for directory inode %" PRIu64 "\n"),
+_("llaborde: bad directory block magic # %#x in block %" PRIu64 " for directory inode %" PRIu64 "\n"),
 				be32_to_cpu(data->magic), dbno, ino);
 		i = process_dir2_data(mp, ino, dip, ino_discovery, dirname,
 			parent, bp, dot, dotdot, (xfs_dablk_t)dbno,
